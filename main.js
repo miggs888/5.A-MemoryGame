@@ -30,6 +30,7 @@ function preload() {
     ]
 }
 function setup () {
+    //stlying
     createCanvas(760, 840);
     background('pink');
     textFont("azo-sans-uber");
@@ -37,6 +38,7 @@ function setup () {
     heading.position(100, 80);
     ellipseMode(RADIUS);
     noStroke();
+    //functions
     let selectedFaces = [];
     for (let z = 0; z < 4; z++) {
         const randomIdx = floor(random(cardfaceArray.length));
@@ -76,7 +78,7 @@ function draw () {
     gameState.flippedCards.length = 0;
     gameState.waiting = false;
     fill(255);
-    textSize(24);
+    textSize(26);
     text('Attempts: ' + gameState.attempts, 600, 125);
     text('Matches: ' + gameState.numMatches, 600, 150);
 }
