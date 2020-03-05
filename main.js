@@ -6,7 +6,7 @@ let cards = [];
 let gameState = {
     totalPairs: 8,
     flippedCards: [],
-    numMatches: 0, 
+    numMatched: 0, 
     attempts: 0,
     waiting: false,
 };
@@ -40,7 +40,7 @@ function setup () {
     noStroke();
     //functions
     let selectedFaces = [];
-    for (let z = 0; z < 4; z++) {
+    for (let z = 0; z < 8; z++) {
         const randomIdx = floor(random(cardfaceArray.length));
         const face = cardfaceArray[randomIdx];
         selectedFaces.push(face);
@@ -80,7 +80,7 @@ function draw () {
     fill(255);
     textSize(26);
     text('Attempts: ' + gameState.attempts, 600, 125);
-    text('Matches: ' + gameState.numMatches, 600, 150);
+    text('Matches: ' + gameState.numMatched, 600, 150);
 }
 function mousePressed() {
     if (gameState.waiting) {
@@ -106,6 +106,7 @@ function mousePressed() {
             gameState.flippedCards.length = 0;
             // increment the score
             gameState.numMatched++;
+            loop();
         } else {
             gameState.waiting = true;
             const loopTimeout = window.setTimeout(() => {
@@ -130,7 +131,7 @@ class Card {
         if(this.face=== UP || this.isMatch) {
             fill('#aaa');
             ellipse(this.x, this.y, this.r);
-            image(cardFaceImg, this.x - 35, this.y - 25);
+            image(this.cardFaceImg, this.x - 70, this.y - 80);
             
         } else {
             fill(255);
